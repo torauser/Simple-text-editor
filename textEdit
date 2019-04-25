@@ -1,0 +1,55 @@
+'use strict';
+let story = ''; // ваш текст здесь
+let overusedWords = ['really', 'very', 'basically']; // часто употребляемые слова
+let unnecessaryWords = ['extremely', 'literally', 'actually']; // слова, от которых нам следует избавиться
+
+// функция для создания массива, где каждый его элемент является одним словом
+let storyWords= [];
+function splitter(text, sep) {
+  storyWords = text.split(sep);
+  console.log(`Words in the story: ${storyWords.length}`)
+}
+// удаляем необязательные слова
+let betterStory = storyWords.filter(element=>{
+  return !unnecessaryWords.includes(element);
+});
+console.log(`The number of words after removing unnecessary ones: ${betterStory.length}`)
+
+// находим количество часто употребимых слов в тексте (1 способ)
+let overused = 0;
+storyWords.forEach(word=>{
+  for (let z=0;z<=overusedWords.length;z++){
+    if (word===overusedWords[z]){
+      overused++;
+    }
+  }
+})
+console.log(overused);
+
+// находим количество часто употребимых слов в тексте (2 способ), если нужно количество каждого из них
+let overusedWord1 = 0;
+let overusedWord2 = 0;
+let overusedWord3 = 0;
+for ( let wrds of storyWords) {
+  if (wrds==='really'){
+    overusedWord1++;
+  } else if (wrds==='very') {
+    overusedWord2++;
+  } else if (wrds==='basically')
+    overusedWord3++;
+}
+console.log(`Really was used: ${overreally} times.`)
+console.log(`Very was used: ${oververy} times.`)
+console.log(`Basically was used: ${overbasically} times`)
+
+// функция, для замены слов. Ее можно настроить более точно: одно из overused слов на то, что вам нужно
+function replacing(text) {
+    for (let word of text) {
+  	    if (word === 'really' || word === 'very' || word === 'basically') {
+		    text.splice(text.indexOf(word),1,'anything');
+  	    }
+    }
+}
+
+
+
